@@ -11,13 +11,15 @@ Chapter 7 Notes
 **What is Functional Reactive Programming?**
 
 Everything that happens is an event<br>
-Events usually happen asynchronously (not at the same time)<br>
-Old way: delegates and callbacks<br>
-Better way: reactive programming <br>
+Events usually happen asynchronously (not at the same time)
 
-Events are sent by an event source<br>
-Interested parties can register to receive certain events<br> 
-More often than not, streams of events need to be transformed to make them more useful for the respective subscriber
+Ways to deal with asynchronous behavior:
+
+1. 	delegates and callbacks
+2. 	reactive programming<br>
+		- Events are sent by an event source<br>
+		- Interested parties can register to receive certain events<br> 
+		- More often than not, streams of events need to be transformed to make them more useful for the respective subscriber
 
 Combine v RxSwift - Combine is more deeply integrated into Apple’s platforms since it is made by Apple
 
