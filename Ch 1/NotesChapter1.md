@@ -8,6 +8,9 @@ Chapter 1 Notes
 
 # Ch 1 SwiftUI: A New Beginning
 
+**@State** means the variable will change<br>
+**$name** means the name can change; the text is dependent on the name which can change
+
 ### SwiftUI Principles
 
 **Declarative v. Imperative**<br>
