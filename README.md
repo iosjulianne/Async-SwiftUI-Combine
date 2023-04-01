@@ -8,7 +8,13 @@ Code for Peter Friese's book, Asynchronous Programming with SwiftUI and Combine
 <!-- ABOUT THE PROJECT -->
 ## About
 
-This repo contains code for the book and my solutions to the exercises.
+This repo contains code for the book, my notes and solutions to the exercises.
 
 <a href="https://github.com/peterfriese/Asynchronous-Programming-with-SwiftUI-and-Combine/"><strong>Book's code samples »</strong></a>
 <br />
+
+
+<!-- VOCAB WORDS -->
+### Vocabulary
+**DSL** - Domain Specific Language<br>
+**Opaque type** - "some" keyword turns type into opaque type. This means that the compiler still has access to the underlying concrete type, but clients of the module don’t — they just see the protocol of the return value
