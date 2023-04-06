@@ -17,7 +17,9 @@ This repo contains code for the book, my notes and solutions to the exercises.
 <!-- GENERAL NOTES -->
 ### 📚 Vocabulary
 **DSL** - Domain Specific Language<br>
-**Opaque type** - "some" keyword turns type into opaque type. This means that the compiler still has access to the underlying concrete type, but clients of the module don’t — they just see the protocol of the return value
+**Opaque type** - "some" keyword turns type into opaque type. This means that the compiler still has access to the underlying concrete type, but clients of the module don’t — they just see the protocol of the return value<br>
+**pyramid of doom** - deeply nested code that’s difficult to navigate
+**source of truth** - there is one and only one place that determines the value of a piece of data
 
 
 ### 🔥 Hot Keys
@@ -32,3 +34,4 @@ This repo contains code for the book, my notes and solutions to the exercises.
 * [iOS Study Circle: Asynchronous Programming with SwiftUI - Session 1 (Planning)](https://www.youtube.com/watch?v=mtA6eie1Dsw)
 * [iOS Study Circle: Asynchronous Programming with SwiftUI - Session 2 (Chapters 1 -3 )](https://www.youtube.com/watch?v=ELxsFvNdRkY)
 * [iOS Study Circle: Asynchronous Programming with SwiftUI - Session 3 - SwiftUI: State Management](https://www.youtube.com/watch?v=B76Q_l1Do4Q)
+* [iOS Study Circle: Asynchronous Programming with SwiftUI - Session 4 - SwiftUI: State Management](https://www.youtube.com/watch?v=5ZoWCbfRyHM)
