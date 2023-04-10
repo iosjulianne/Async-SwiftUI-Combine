@@ -36,7 +36,11 @@ Value types: struct, enum
 * Bindings are especially useful when assembling a view from several smaller, specialized views. 
 * They are an important tool to help create reusable views.
 
-Best for managing local UI state
+@State and @Binding
+
+- Best for managing local UI state
+- Avoid using for complex objects that you want to persist on disk or send across the network
+- If needed, make @State `private` to make sure they cannot accidentally be modified from the outside
 
 
 **Binding Objects**
@@ -45,24 +49,42 @@ The only way @StateObject, @ObservedObject, and @EnvironmentObject differ from e
 
 Consumer - the view that subscribes to the updates an ObservableObject sends; considers all property wrappers to be the same; @Published
 
+
+**ObservableObject**
+
 Combine Publisher
 - Swift class needs to conform to ObservableObject protocol 
 - Mark some of the class’s properties as @Published
 
 
-**ObservableObject**
+**@StateObject**<br>
+@StateObject is only created once, so data is not lost
 
-**@StateObject**
-Use @StateObject, – when you need to listen to changes or updates in an ObservableObject 
-– and you create the instance you want to listen to in the view itself That is, when the view you want to use the object in is the owner of the data. 
-
-
-**@ObservedObject**
-Use @ObservedObject, – when you need to listen to changes and updates in an ObservedObject 
-– and the object you want to observe in a view is not created by the view, but outside of the view (e.g., in a parent view or the app struct) 
+Use @StateObject,
+	
+* when you need to listen to changes or updates in an ObservableObject 
+* and when the view you want to use the object in is the owner of the data. 
 
 
-**@EnvironmentObject**
+**@ObservedObject**<br>
+Using @ObservedObject to create a model object
+is an antipattern that you should avoid. So if you see code like this: `@ObservedObject var foo = Bar()`, you should refactor your code and use @StateObject instead.
+
+Use @ObservedObject,
+
+* when you need to listen to changes and updates in an ObservedObject 
+* and the object you want to observe in a view is not created by the view, but outside of the view (e.g., in a parent view or the app struct) 
+
+
+**@EnvironmentObject**<br>
+@EnvironmentObject fetches an ObservableObject from the environment and makes it available to the view<br>
+
+Drawback: the compiler has no way to check if you injected an ObservableObject into the environment
+before trying to fetch it using @EnvironmentObject. When trying to retrieve an object from the environment that doesn’t exist, your app will crash with a runtime error.
+
+
 Use @EnvironmentObject, 
-– when you need to listen to changes and updates in an ObservedObject – and you’d have to pass an ObservedObject through several views that don’t 
+
+* when you need to listen to changes and updates in an ObservedObject
+* and you’d have to pass an ObservedObject through several views that don’t 
 need this object before it reaches the view where you need access to the object 
