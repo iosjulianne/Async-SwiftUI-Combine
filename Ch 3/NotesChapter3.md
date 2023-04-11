@@ -10,13 +10,13 @@ Chapter 3 Notes
 
 **Views** - the most basic components for building UIs in SwiftUI
 
-* To define the UI of your application, you create a lightweight description of your user interface, making use of SwiftUI’s built-in views. 
-* By doing so, you compose your own views, which you can then use in your app.
+* Use SwiftUI's built-in views to create a lightweight description of your user interface 
+* By doing so, you compose your own views, which you can then use in your app
 * Can also extract views into a Swift package for reuse
-* Swift Package Index - a search engine for packages that support the Swift Package Manager
+* *Swift Package Index* - a search engine for packages that support the Swift Package Manager
 * SwiftUI views are structs that need to conform to the View protocol.
 	* conformers need to implement a computed property
-named body that returns a single View:
+named body that returns a single View
 	* By using container views, we can meet the View protocol’s requirement of returning a single View from the body computed property.
 
 *opaque type* - by returning the result of a view’s body as `some View`, the caller will only see a view and doesn’t get any insight into how this view is structured
@@ -81,7 +81,7 @@ SwiftUI's User interface elements:
 *Layout Behavior*
 	
 1. The parent view offers some size to its child view.
-2. The child view then decides how much space it requires, taking into consideration its own size (the intrinsic size) and the space that the parent view of- fered (which the child view is free to ignore completely). It then returns this size to the parent view.
+2. The child view then decides how much space it requires, taking into consideration its own size (the intrinsic size) and the space that the parent view offered (which the child view is free to ignore completely). It then returns this size to the parent view.
 	* Hugging - The view chooses the best size to fit its content, without consulting the size offered by its parent view. 
 		* e.g. Text will consume just space required, even if the container offers more space.
 	* Expanding - The view tries to use up as much space as offered by its parent view. 
