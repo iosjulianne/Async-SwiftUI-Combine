@@ -24,8 +24,8 @@ SwiftUI views are structs (value types), so when copying no other part of the ap
 
 Property wrappers Updates are unidirectional
 
-**Binding Value Types**
-Value types: struct, enum
+**Binding Value Types**<br>
+Value types: struct, enum<br>
 @State variable - declare and setting value; simple property types
 
 * `@State var name = "Julianne"` creates a binding for the variable
@@ -43,8 +43,8 @@ Value types: struct, enum
 - If needed, make @State `private` to make sure they cannot accidentally be modified from the outside
 
 
-**Binding Objects**
-Binding Objects - more complex 
+**Binding Objects**<br>
+Binding Objects - more complex<br> 
 The only way @StateObject, @ObservedObject, and @EnvironmentObject differ from each other is how they manage data. 
 
 Consumer - the view that subscribes to the updates an ObservableObject sends; considers all property wrappers to be the same; @Published
