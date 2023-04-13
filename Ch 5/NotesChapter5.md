@@ -63,11 +63,36 @@ UI updates must be executed on the main thread
 
 *Pull-to-Refresh*
 
+`
+    .refreshable {
+      await viewModel.refresh()
+    } 
+    `
+    
+As indicated by the `await` keyword, `refreshable` opens an asynchronous execution context. 
+
+* This requires that the code you’re calling from within refreshable can execute asynchronously
+* Can also execute nonasynchronously, but more often than not you’ll want to communicate with a remote API that requires being called asynchronously
+
+Provide the value parameter,to make sure this animation is only run when the contents of the list view change
+
+`.animation(.default, value: viewModel.books)`
+
 
 *Searching*
 
+`.searchable` view modifier to the list view, and SwiftUI will handle all the UI aspects for you automatically:
+	
+* displays a search field (and makes sure it is offscreen when you first display the list view, just like you’d expect from a native app). 
+* triggers the search and clears the search field
 
 
+How does this Combine pipeline work?
+
+1. We use Publishers.CombineLatest to take the latest state of the two publishers, $originalBooks and $searchTerm. In a real-world application, we might receive updates to the collection of books in the background, and we’ll want these to be included in the search result as well. The CombineLatest publisher will publish a new tuple containing the latest value of original-
+Books and searchTerm every time one of those publishers sends a new event. 
+2. We then use the .map operator to transform the (books, searchTerm) tuple into an array of books that we eventually assign to the published $booksproperty, which is connected to the SearchableBooksListView.
+3. Inside the .map closure, we use filter to return only the books that contain the search term either in their title or in the author’s name. This part of the process actually is not Combine-specific—filter is a method on Array.
 
 **Styling**
 
