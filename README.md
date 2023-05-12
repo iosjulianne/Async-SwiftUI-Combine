@@ -32,9 +32,14 @@ This repo contains code for the book, my notes and solutions to the exercises.
 
 ### 🌟 Study Circle Videos
 * [iOS Study Circle: Asynchronous Programming with SwiftUI - Session 1 (Planning)](https://www.youtube.com/watch?v=mtA6eie1Dsw)
-* [iOS Study Circle: Asynchronous Programming with SwiftUI - Session 2 (Chapters 1 -3 )](https://www.youtube.com/watch?v=ELxsFvNdRkY)
-* [iOS Study Circle: Asynchronous Programming with SwiftUI - Session 3 - SwiftUI: State Management](https://www.youtube.com/watch?v=B76Q_l1Do4Q)
-* [iOS Study Circle: Asynchronous Programming with SwiftUI - Session 4 - SwiftUI: State Management](https://www.youtube.com/watch?v=5ZoWCbfRyHM)
+* [iOS Study Circle: Asynchronous Programming with SwiftUI - Session 2 (Chapters 1-3)](https://www.youtube.com/watch?v=ELxsFvNdRkY)
+* [iOS Study Circle: Asynchronous Programming with SwiftUI - Session 3 (Chapter 4) - SwiftUI: State Management](https://www.youtube.com/watch?v=B76Q_l1Do4Q)
+* [iOS Study Circle: Asynchronous Programming with SwiftUI - Session 4 (Chapters 5-6) - SwiftUI: State Management](https://www.youtube.com/watch?v=5ZoWCbfRyHM)
+* [iOS Study Circle: Asynchronous Programming with SwiftUI - Session 5 (Chapters 7-8) - Combine: Introduction](https://www.youtube.com/watch?v=n9SFqHxDozI)
+* [iOS Study Circle: Asynchronous Programming with SwiftUI - Session 6 (Chapter 9) - Networking with Combine](https://www.youtube.com/watch?v=XiL07wvmYb4)
+* Session 7 - No Recording
+* [iOS Study Circle: Asynchronous Programming with SwiftUI - Session 8 (Chapter 10) - Error Handling](https://www.youtube.com/watch?v=lpBE6iuYqPk)
+* [iOS Study Circle: Asynchronous Programming with SwiftUI - Session 9 (Chapter 11) - Implementing Custom Operators in Combine](https://www.youtube.com/watch?v=WfnP7ju0F0A)
 
 ### 🐣 To Do
 * Finish Ch 5 notes
