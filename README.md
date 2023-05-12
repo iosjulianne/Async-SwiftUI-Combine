@@ -35,3 +35,13 @@ This repo contains code for the book, my notes and solutions to the exercises.
 * [iOS Study Circle: Asynchronous Programming with SwiftUI - Session 2 (Chapters 1 -3 )](https://www.youtube.com/watch?v=ELxsFvNdRkY)
 * [iOS Study Circle: Asynchronous Programming with SwiftUI - Session 3 - SwiftUI: State Management](https://www.youtube.com/watch?v=B76Q_l1Do4Q)
 * [iOS Study Circle: Asynchronous Programming with SwiftUI - Session 4 - SwiftUI: State Management](https://www.youtube.com/watch?v=5ZoWCbfRyHM)
+
+### 🐣 To Do
+* Finish Ch 5 notes
+* Ch 6 notes
+* Ch 9 notes
+* Watch session 6
+* Ch 10 notes
+* Watch session 8
+* Ch 11 notes
+* Watch session 9
