@@ -96,16 +96,77 @@ Books and searchTerm every time one of those publishers sends a new event.
 
 **Styling**
 
-*List Styles*
-*Headers and Footers*
+*List Styles*: .listStyle view modifier
+
+1. automatic
+2. grouped
+3. inset
+4. insetGrouped
+5. plain
+6. sidebar
+
 *List Cells*
+
+- .listRowSeparator
+- .foregroundColor
+- .badge
+- .listRowSeparatorTint
+- .listRowBackground
+
 *Separators*
+
+- .listSectionSeparator()
+- .listSectionSeparatorTint()
 
 **Actions**
 
-*Swipe-to-Delete*
-*Moving and Deleting Items Using EditMode*
-*Swipe Actions*
+*Swipe-to-Delete*<br>
+`.onDelete` modifier has built-in swipe-to-delete function which needs to be called on `ForEach` loop inside a `List`
+
+```
+List {
+      ForEach(items) { item in
+        Label(item.title, systemImage: item.iconName)
+      }
+      .onDelete { indexSet in
+        items.remove(atOffsets: indexSet)
+	} 
+}
+```
+
+*Moving and Deleting Items Using EditMode*<br>
+`.onMove` modifier lets users rearrange items by dragging them across the list
+
+```
+.onMove { indexSet, index in
+	items.move(fromOffsets: indexSet, toOffset: index)
+ }
+```
+
+To turn on edit mode for a `List`:
+
+```
+.toolbar {
+  EditButton()
+}
+```
+
+*Swipe Actions*<br>
+Set up buttons to implement actions inside `.swipeActions` view modifier
+
+```
+.swipeActions {
+	Button (action: { viewModel.markItemRead(item) }) {
+ 		if let isRead = item.isRead, isRead == true {
+          Label("Read", systemImage: "envelope.badge.fill")
+       }
+       else {
+          Label("Unread", systemImage: "envelope.open.fill")
+		} 
+	}
+	 .tint(.blue)
+}
+```
 *Basic Swipe Actions*
 *Specifying the Edge*
 *Swipe Actions and onDelete*
