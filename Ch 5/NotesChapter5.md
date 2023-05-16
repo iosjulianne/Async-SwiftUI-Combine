@@ -155,7 +155,7 @@ To turn on edit mode for a `List`:
 Set up buttons to implement actions inside `.swipeActions` view modifier
 
 ```
-.swipeActions {
+.swipeActions(edge: .leading) {
 	Button (action: { viewModel.markItemRead(item) }) {
  		if let isRead = item.isRead, isRead == true {
           Label("Read", systemImage: "envelope.badge.fill")
@@ -167,17 +167,78 @@ Set up buttons to implement actions inside `.swipeActions` view modifier
 	 .tint(.blue)
 }
 ```
-*Basic Swipe Actions*
-*Specifying the Edge*
-*Swipe Actions and onDelete*
-*Adding More Swipe Actions*
-*Full Swipe*
-*Styling Your Swipe Actions*
+- Different from `onDelete` modifier (which is applied to `ForEach` loop inside `List`)
+- More flexibility to apply different set of actions depending on row
+- `edge` parameter to specify leading or trailing swipe actions
 
-**Managing Focus in Lists**
-*How to Manage Focus in SwiftUI*
-*How to Manage Focus in Lists*
-*Handling the Enter Key*
-*What About MVVM?*
+SwiftUI will stop synthesizing the delete functionality once you use the swipeActions modifier
+
+
+*Full Swipe*<br>
+By default, the first action for any given swipe direction can be invoked by using a full swipe
+
+- Set `allowsFullSwipe` parameter to false to deactivate
+
+*Styling Your Swipe Actions*<br>
+`.destructive` will automatically tint the button red
+
+**Managing Focus in Lists**<br>
+*How to Manage Focus in SwiftUI*<br>
+@FocusState -  a property wrapper that can be used to track and modify focus within a scene
+
+example: if user hits save button on a simple input form and one field wasn't filled out, you can focus on it
+
+*How to Manage Focus in Lists*<br>
+Use an enum to hold the `id` of element you want to focus
+
+```
+enum Focusable: Hashable {
+  case none
+  case row(id: String)
+}
+```
+Define variable `focusedReminder: Focusable?` as `@FocusState`
+
+```
+struct Reminder: Identifiable {
+  var id: String = UUID().uuidString
+  var title: String
+}
+struct FocusableListView: View {
+  @State var reminders: [Reminder] = Reminder.samples
+  @FocusState var focusedReminder: Focusable?
+  var body: some View {
+    List {
+      ForEach($reminders) { $reminder in
+        TextField("", text: $reminder.title)
+          .focused($focusedReminder, equals: .row(id: reminder.id))
+} }
+    .toolbar {
+      ToolbarItemGroup(placement: .bottomBar) {
+        Button(action: { createNewReminder() }) {
+          Text("New Reminder")
+} }
+} }
+// ... }
+```
+*Handling the Enter Key*<br>
+
+- Use `.onSubmit` view modifier to run code when the user submits a value to a view
+- Triggered by enter key
+- Elements will be added to end of list, but can make it so it is inserted directly after focused element
+
+*What About MVVM?*<br>
+ 
+ - `@FocusState` conforms to DynamicProperty, which can only be
+used inside views
+
+To synchronize the focus state between the view model and the view, we can
+
+1. Add the `@FocusState` back to the view
+2. Mark `focusedReminder` as a `@Published` property on the view model 
+3. And sync them using `.onChange(of:)`
+
+
 *Eliminating Empty Elements*
 
+Attach a Combine pipeline to it and react to changes of the property. This will allow us to detect when the previously focused element is an empty element and consequently remove it.
