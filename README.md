@@ -37,9 +37,19 @@ This repo contains code for the book, my notes and solutions to the exercises.
 * [iOS Study Circle: Asynchronous Programming with SwiftUI - Session 4 (Chapters 5-6) - SwiftUI: State Management](https://www.youtube.com/watch?v=5ZoWCbfRyHM)
 * [iOS Study Circle: Asynchronous Programming with SwiftUI - Session 5 (Chapters 7-8) - Combine: Introduction](https://www.youtube.com/watch?v=n9SFqHxDozI)
 * [iOS Study Circle: Asynchronous Programming with SwiftUI - Session 6 (Chapter 9) - Networking with Combine](https://www.youtube.com/watch?v=XiL07wvmYb4)
-* Session 7 - No Recording
+* Session 7 - TBA
 * [iOS Study Circle: Asynchronous Programming with SwiftUI - Session 8 (Chapter 10) - Error Handling](https://www.youtube.com/watch?v=lpBE6iuYqPk)
 * [iOS Study Circle: Asynchronous Programming with SwiftUI - Session 9 (Chapter 11) - Implementing Custom Operators in Combine](https://www.youtube.com/watch?v=WfnP7ju0F0A)
+* [iOS Study Circle: Asynchronous Programming - SwiftUI - Session 10 (Chapter 12) - Wrapping Existing APIs in Combine](https://www.youtube.com/watch?v=1JS5D36lGb0)
+
+### 🔬 Extra Resources (shared in Slack)
+
+* [Using map, flatMap and compactMap in Combine – Donny Wals](https://www.donnywals.com/using-map-flatmap-and-compactmap-in-combine/)
+* [When to Use Combine's TryMap Instead of Map – Cocoacasts](https://cocoacasts.com/combine-essentials-when-to-use-combine-trymap-instead-of-map)
+
+
+* [Getting Started with Combine Framework in Swift - Introduction to Functional Reactive Programming – Karin Prater](https://www.youtube.com/watch?v=tbzR-eHr6oo&list=PLWHegwAgjOkoIMgZ7QF_SHUtEB_rWXtH0)
+
 
 ### 🐣 To Do
 * Finish Ch 8 notes
