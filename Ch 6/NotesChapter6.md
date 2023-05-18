@@ -90,12 +90,23 @@ Button(action: { showEditBookView.toggle() }) {
 ## Input Validation
 Checking user's input of a book ISBN 
 ### Using .onChange(of:)
+You can call `.onChange(of:)` on any SwiftUI view to trigger side effects whenever a property changes.
+
+- Can be any `Environment` key or `Binding` on the view
 
 ### Using a View Model to Handle Form Validation
 
- Structs do have memberwise initializers, but classes don’t. The main reason is that classes support inheritance, and it would be pretty difficult to implement memberwise initializers
-in a way that doesn’t break if you add new properties to one of the parent classes.
+- Use a *view model* to encapsulate the *view-specific* business logic
+	- It won't pollute our data model with code that is only required in very specific locations in your app
+	- Performs data validation
+	- Gives us the opportunity to define additional properties for any warnings or error messages we might want to display
 
 ### Synchronizing a Local Source of Truth with the Global Source of Truth by Using @Binding and @ObservableObject
 
 ### Using Combine to Perform Form Validation
+
+```
+ self.$book
+ 	.map { checkISBN(isbn: $0.isbn) }
+ 	.assign(to: &$isISBNValid)
+```
