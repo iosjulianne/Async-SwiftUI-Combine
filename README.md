@@ -42,8 +42,7 @@ This repo contains code for the book, my notes and solutions to the exercises.
 * [iOS Study Circle: Asynchronous Programming with SwiftUI - Session 9 (Chapter 11) - Implementing Custom Operators in Combine](https://www.youtube.com/watch?v=WfnP7ju0F0A)
 
 ### 🐣 To Do
-* Finish Ch 5 notes
-* Ch 6 notes
+* Finish Ch 8 notes
 * Ch 9 notes
 * Watch session 6
 * Ch 10 notes
