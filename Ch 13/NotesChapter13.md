@@ -20,7 +20,7 @@ By default, SwiftUI code runs on main thread
 
 
 `SchedulerTimeType` - associated type used to implement time-keeping in schedulers
-`SchedulerTimeIntervalConvertible` - `SchedulerTimeType` - needs to conform to this protocol, which is a means to express relative time
+`SchedulerTimeIntervalConvertible` - a `SchedulerTimeType` needs to conform to this protocol, which is a means to express relative time
 
 ## Types of Schedulers
 
