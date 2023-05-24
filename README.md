@@ -19,7 +19,8 @@ This repo contains code for the book, my notes and solutions to the exercises.
 **DSL** - Domain Specific Language<br>
 **Opaque type** - "some" keyword turns type into opaque type. This means that the compiler still has access to the underlying concrete type, but clients of the module don’t — they just see the protocol of the return value<br>
 **pyramid of doom** - deeply nested code that’s difficult to navigate<br>
-**source of truth** - the data that determines the state of the UI. There can only be one source of truth for each UI element.
+**source of truth** - the data that determines the state of the UI. There can only be one source of truth for each UI element.<br>
+**callback** 
 
 
 ### 🔥 Hot Keys
@@ -52,7 +53,6 @@ This repo contains code for the book, my notes and solutions to the exercises.
 
 
 ### 🐣 To Do
-* Finish Ch 8 notes
 * Ch 9 notes
 * Watch session 6
 * Ch 10 notes
