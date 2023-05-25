@@ -16,17 +16,27 @@ Combine helps combine your local source of truth with data from a remote service
 ## Fetching Data Using URLSession
 Common problems: 
 
-- Unclear what the path is, completion handlers can be confusing, error handling all over the place, several exit points, forget to call `resume()` 
+- unclear what the path is
+- completion handlers can be confusing
+- error handling all over the place
+- several exit points
+- forget to call `resume()` 
 
 
 ## Using Combine to Fetch Data
 
-- The resulting code has fewer exit points, follows a straight line, is easier to read and maintain, less prone to subtle bugs
+The resulting code has 
+
+- fewer exit points
+- follows a straight line
+- is easier to read and maintain
+- less prone to subtle bugs
 
 Use `dataTaskPublisher` to perform the request <br>
-	- one-shot publisher <br>
-	- emits an event once the requested data has arrived <br>
-	- Combine publishers don’t perform any work if there is no subscriber
+
+- one-shot publisher 
+- emits an event once the requested data has arrived 
+- Combine publishers don’t perform any work if there is no subscriber
 
 ### Destructuring Tuples Using Key Paths
 *Destructuring* - extracting the individual elements from the result tuple
@@ -50,6 +60,14 @@ return URLSession.shared.dataTaskPublisher(for: url)
 
 ## Connecting to the UI
 
+Since `@Published` properties are Combine publishers, we can subscribe to
+them to receive updates whenever their value changes.
+
+Make pipeline reusable to preserve memory and avoid wasting CPU cycles:
+
+ - wrap it inside a *lazy computed property*. Lazy computed properties are computed only once, and only if they are accessed.
+
+
 ## Handling Multithreading
 
 ## Optimizing Network Access
@@ -59,5 +77,6 @@ return URLSession.shared.dataTaskPublisher(for: url)
 ### Is it a bug or a feature?
 ### Using debounce to Further Optimize the UX
 ### Using removeDuplicates to Avoid Sending the Same Request Twice
+*removeDuplicates* will remove any duplicate events from the stream of events if they follow each other subsequently
 
 ## Bringing It All Together
