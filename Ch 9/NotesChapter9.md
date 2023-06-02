@@ -69,14 +69,29 @@ Make pipeline reusable to preserve memory and avoid wasting CPU cycles:
 
 
 ## Handling Multithreading
+Do not access the UI from a background thread. Instead use `receive(on:)` operator
 
 ## Optimizing Network Access
+*idempotent* - an operation or function that can be applied multiple times without changing the result beyond the initial application
 
 ### Finding the Root Cause
+Use `print()` for debugging
+
 ### Using the share Operator to Share a Publisher
+`share()` - share the results of a publisher with multiple subscribers
+
 ### Is it a bug or a feature?
+bug: https://github.com/peterfriese/AppleFeedback/tree/main/FB9826727
+
 ### Using debounce to Further Optimize the UX
+`debounce` - it will drop all events until there is a pause and then it will pass on the most recent event to the downstream publisher
+ 
+ - for example, will only send username after user finishes typing
+
 ### Using removeDuplicates to Avoid Sending the Same Request Twice
-*removeDuplicates* will remove any duplicate events from the stream of events if they follow each other subsequently
+`removeDuplicates` will remove any duplicate events from the stream of events if they follow each other subsequently
+
+Together, `removeDuplidates` and `debounce` help reduce requests
 
 ## Bringing It All Together
+`Publishers.CombineLatest()` to combine publishers
