@@ -32,6 +32,8 @@ Data input from remote servers and local APIs
 
 Make Combine pipelines reusable by encapsulating them in computed properties. This can help with duplicate code and scalability.
 
+`eraseToAnyPublisher` - erases the type of a pipeline to `AnyPublisher`, which allows us to wrap our pipeline in a computed property
+
 Use lazy properties to only create the pipeline once, when the view model is initialized.
 
 ### Validating the Password
