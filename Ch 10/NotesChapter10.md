@@ -43,13 +43,23 @@ Return type `Never` means there is never going to be an error which can be guara
 Typical approach to handling errors when using `flatMap` is to combine it with a `catch` operator
 
 ### Handling Device/Network Offline Errors
+If offline, run local form validation logic, and when user finishes filling out form, show error message
 
 
 ### Handling Validation Errors
+- Most validation errors should be handled locally on the client
+- Ideally, the server should return a HTTP status code in the 4xx range
+
 ### Handling Response Parsing Errors
+Sometimes the data sent by the server isn't what the client expects
+
+`decode` operator - use to decode the response payload and throw an error in case the payload couldn’t be mapped
+
+* it is important to make sure we’re only sending at most one network request per keystroke (`share()` operator)
+
 ### Handling Internal Server Errors
-`tryCatch` operator - “handles errors from an
-upstream publisher by either replacing it with another publisher or throwing a new error.”
+`tryCatch` operator - handles errors from an
+upstream publisher by either replacing it with another publisher or throwing a new error
 
 1. catch all errors
 2. filter out the `serverError`
