@@ -24,9 +24,16 @@ Create our own custom operators by extending `Publisher` with a function that re
 
 `dump()` - prints the contents of a variable to the console, showing the structure of the variable as a nested tree — similar to the debug inspector in Xcode
 
-## Implementing Custom Operators
+`handleEvents` - combine operator that allows you to observe and react to different events that occur during the lifecycle of a publisher
+
+## Implementing a Retry Operator with a Delay
+Use the `tryCatch` operator, so need to use its publisher type `Publishers.TryCatch` as the return type
+
 
 ## Conditionally Retrying
+ Add a parameter for a trailing closure that the caller can use to control whether the operator should retry or not to make code reusable
 
 ## Implementing a Retry Operator for Exponential Backoff
+*Exponential backoff* is commonly utilized as part of rate limiting mechanisms in computer systems such as web services, to help enforce fair distribution of access to resources and prevent network congestion
 
+The idea behind exponential backoff is to progressively increase the delay between retry attempts when a network request fails
