@@ -20,7 +20,16 @@ This repo contains code for the book, my notes and solutions to the exercises.
 **Opaque type** - "some" keyword turns type into opaque type. This means that the compiler still has access to the underlying concrete type, but clients of the module don’t — they just see the protocol of the return value<br>
 **pyramid of doom** - deeply nested code that’s difficult to navigate<br>
 **source of truth** - the data that determines the state of the UI. There can only be one source of truth for each UI element.<br>
-**callback** 
+**callback** - a function that is passed as an argument and executes when a specific condition or event occurs<br>
+**idempotent** - if you perform the operation or function once or multiple times, the outcome remains the same<br>
+**toast** - an overlay that shows for a brief moment and then disappears<br>
+**payload** - the data sent from a server in response to a network request<br>
+**exponential backoff** - a strategy used in networking and communication protocols to handle retries and manage network congestion; progressively increase the delay between retry attempts when a network request fails<br>
+**projected value** - a combine term that refers to a property or value that is projected from a publisher or operator. It allows you to access additional information or perform further operations on the publisher or operator<br>
+**synchronously** - tasks performed one after another<br>
+**asynchronously** - not happening or done at the same time or speed <br> **thread explosion** - a situation where a program or system creates an excessive number of threads, causing resource exhaustion and degradation in performance<br>
+**closures** - self-contained blocks of functionality that can be passed around and used in your code<br> 
+**suspension points** – the places where a function can be suspended
 
 
 ### 🔥 Hot Keys
@@ -41,7 +50,8 @@ This repo contains code for the book, my notes and solutions to the exercises.
 * Session 7 - TBA
 * [iOS Study Circle: Asynchronous Programming with SwiftUI - Session 8 (Chapter 10) - Error Handling](https://www.youtube.com/watch?v=lpBE6iuYqPk)
 * [iOS Study Circle: Asynchronous Programming with SwiftUI - Session 9 (Chapter 11) - Implementing Custom Operators in Combine](https://www.youtube.com/watch?v=WfnP7ju0F0A)
-* [iOS Study Circle: Asynchronous Programming - SwiftUI - Session 10 (Chapter 12) - Wrapping Existing APIs in Combine](https://www.youtube.com/watch?v=1JS5D36lGb0)
+* [iOS Study Circle: Asynchronous Programming with SwiftUI - Session 10 (Chapter 12) - Wrapping Existing APIs in Combine](https://www.youtube.com/watch?v=1JS5D36lGb0)
+* [iOS Study Circle: Asynchronous Programming with SwiftUI - Session 11 (Chapter 13) - Combine Schedulers and SwiftUI](https://www.youtube.com/watch?v=qZky1xlPQ4M)
 
 ### 🔬 Extra Resources (shared in Slack)
 
@@ -53,9 +63,7 @@ This repo contains code for the book, my notes and solutions to the exercises.
 
 
 ### 🐣 To Do
-* Ch 9 notes
+
 * Watch session 6
-* Ch 10 notes
 * Watch session 8
-* Ch 11 notes
 * Watch session 9
