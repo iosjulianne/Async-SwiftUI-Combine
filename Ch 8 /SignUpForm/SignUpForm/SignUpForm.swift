@@ -51,9 +51,25 @@ private class SignUpFormViewModel: ObservableObject {
             .eraseToAnyPublisher()
     }()
     
+    
+    // 2. Verify the password strength and reject any passwords that aren’t strong enough.
+    private lazy var isPasswordStrongPublisher: AnyPublisher<Bool, Never> = {
+        $password
+            .map{ Navajo.strength(ofPassword: $0) }
+            .map{ passwordStrength in
+                switch passwordStrength {
+                case .reasonable, .strong, .veryStrong:
+                    return true
+                case .weak, .veryWeak:
+                    return false
+                }
+            }
+            .eraseToAnyPublisher()
+    }()
+    
     private lazy var isPasswordValidPublisher: AnyPublisher<Bool, Never> = {
-        Publishers.CombineLatest(isPasswordLengthValidPublisher, isPasswordMatchingPublisher)
-            .map { !$0 && $1 }
+        Publishers.CombineLatest3(isPasswordLengthValidPublisher, isPasswordMatchingPublisher, isPasswordStrongPublisher)
+            .map { !$0 && $1 && $2 }
             .eraseToAnyPublisher()
     }()
     
