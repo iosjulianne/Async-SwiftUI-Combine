@@ -36,10 +36,11 @@ private class SignUpFormViewModel: ObservableObject {
             .eraseToAnyPublisher()
     }()
     
+    //  1. Implement a password length requirement: make sure the user’s password has at least eight characters. If it has less than eight characters, display a warning in the footer of the password section of the form.
     // MARK: Password validation
     private lazy var isPasswordLengthValidPublisher: AnyPublisher<Bool, Never> = {
         $password
-            .map{ $0.count <= 8 }
+            .map{ $0.count < 8 }
             .eraseToAnyPublisher()
     }()
     
