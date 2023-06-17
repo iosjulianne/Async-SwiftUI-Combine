@@ -28,6 +28,7 @@ private class SignUpFormViewModel: ObservableObject {
     @Published var usernameMessage: String = ""
     @Published var passwordMessage: String = ""
     @Published var isValid: Bool = false
+    @Published var passwordProgressBarColor: Color = .red
     
     // MARK: Username validattion
     private lazy var isUsernameLengthValidPublisher: AnyPublisher<Bool, Never>  = {
@@ -74,6 +75,25 @@ private class SignUpFormViewModel: ObservableObject {
             .eraseToAnyPublisher()
     }()
     
+    // 3. Add a progress bar to the footer of the password section and display the password strength, coloring the progress bar in red, yellow, and green to indicate the password strength.
+    private lazy var passwordProgressBarColorPublisher: AnyPublisher<Color, Never> = {
+        $password
+            .map{ Navajo.strength(ofPassword: $0) }
+            .map{ passwordStrength in
+                switch passwordStrength {
+                case .veryWeak, .weak:
+                    return Color.red
+                case .reasonable:
+                    return .yellow
+                case .strong:
+                    return .yellow
+                case .veryStrong:
+                    return .green
+                }
+            }
+            .eraseToAnyPublisher()
+    }()
+    
     // MARK: Form validation
     private lazy var isFormValidPublisher: AnyPublisher<Bool, Never> = {
         Publishers.CombineLatest(isUsernameLengthValidPublisher, isPasswordValidPublisher)
@@ -88,6 +108,9 @@ private class SignUpFormViewModel: ObservableObject {
         isUsernameLengthValidPublisher
             .map { $0 ? "" : "Username too short. Needs to be at least 3 characters." }
             .assign(to: &$usernameMessage)
+        passwordProgressBarColorPublisher
+            .map { $0 }
+            .assign(to: &$passwordProgressBarColor)
         
         Publishers.CombineLatest(isPasswordLengthValidPublisher, isPasswordMatchingPublisher)
             .map { isPasswordLengthValid, isPasswordMatching in
@@ -124,8 +147,12 @@ struct SignUpForm: View {
                 SecureField("Password", text: $viewModel.password)
                 SecureField("Repeat password", text: $viewModel.passwordConfirmation)
             } footer: {
-                Text(viewModel.passwordMessage)
-                    .foregroundColor(.red)
+                VStack {
+                    ProgressView(value: 1.0)
+                        .tint(viewModel.passwordProgressBarColor)
+                    Text(viewModel.passwordMessage)
+                        .foregroundColor(.red)
+                }
             }
             
             // Submit button
@@ -137,14 +164,15 @@ struct SignUpForm: View {
             }
         }
     }
-}
-
-// MARK: - Preview
-struct SignUpForm_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationStack {
-            SignUpForm()
-                .navigationTitle("Sign up")
+    
+    
+    // MARK: - Preview
+    struct SignUpForm_Previews: PreviewProvider {
+        static var previews: some View {
+            NavigationStack {
+                SignUpForm()
+                    .navigationTitle("Sign up")
+            }
         }
     }
 }
