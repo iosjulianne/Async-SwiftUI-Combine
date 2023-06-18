@@ -14,6 +14,7 @@
 
 import SwiftUI
 import Combine
+import Navajo_Swift
 
 // MARK: - View Model
 private class SignUpFormViewModel: ObservableObject {
@@ -27,6 +28,8 @@ private class SignUpFormViewModel: ObservableObject {
     @Published var usernameMessage: String = ""
     @Published var passwordMessage: String = ""
     @Published var isValid: Bool = false
+    @Published var passwordProgressBarColor: Color = .red
+    @Published var passwordProgressBarValue: Float = 0.0
     
     // MARK: Username validattion
     private lazy var isUsernameLengthValidPublisher: AnyPublisher<Bool, Never>  = {
@@ -35,10 +38,11 @@ private class SignUpFormViewModel: ObservableObject {
             .eraseToAnyPublisher()
     }()
     
+    //  1. Implement a password length requirement: make sure the user’s password has at least eight characters. If it has less than eight characters, display a warning in the footer of the password section of the form.
     // MARK: Password validation
     private lazy var isPasswordLengthValidPublisher: AnyPublisher<Bool, Never> = {
         $password
-            .map{ $0.count <= 8 }
+            .map{ $0.count < 8 }
             .eraseToAnyPublisher()
     }()
     
@@ -50,9 +54,64 @@ private class SignUpFormViewModel: ObservableObject {
             .eraseToAnyPublisher()
     }()
     
+    
+    // 2. Verify the password strength and reject any passwords that aren’t strong enough.
+    private lazy var isPasswordStrongPublisher: AnyPublisher<Bool, Never> = {
+        $password
+            .map{ Navajo.strength(ofPassword: $0) }
+            .map{ passwordStrength in
+                switch passwordStrength {
+                case .reasonable, .strong, .veryStrong:
+                    return true
+                case .weak, .veryWeak:
+                    return false
+                }
+            }
+            .eraseToAnyPublisher()
+    }()
+    
     private lazy var isPasswordValidPublisher: AnyPublisher<Bool, Never> = {
-        Publishers.CombineLatest(isPasswordLengthValidPublisher, isPasswordMatchingPublisher)
-            .map { !$0 && $1 }
+        Publishers.CombineLatest3(isPasswordLengthValidPublisher, isPasswordMatchingPublisher, isPasswordStrongPublisher)
+            .map { !$0 && $1 && $2 }
+            .eraseToAnyPublisher()
+    }()
+    
+    // 3. Add a progress bar to the footer of the password section and display the password strength, coloring the progress bar in red, yellow, and green to indicate the password strength.
+    private lazy var passwordProgressBarColorPublisher: AnyPublisher<Color, Never> = {
+        $password
+            .map{ Navajo.strength(ofPassword: $0) }
+            .map{ passwordStrength in
+                switch passwordStrength {
+                case .veryWeak, .weak:
+                    return Color.red
+                case .reasonable:
+                    return .yellow
+                case .strong:
+                    return .yellow
+                case .veryStrong:
+                    return .green
+                }
+            }
+            .eraseToAnyPublisher()
+    }()
+    
+    private lazy var passwordProgressBarValuePublisher: AnyPublisher<Float, Never> = {
+        $password
+            .map{ Navajo.strength(ofPassword: $0) }
+            .map { passwordStrength in
+                switch passwordStrength {
+                case .veryWeak:
+                    return 0.2
+                case .weak:
+                    return 0.4
+                case .reasonable:
+                    return 0.6
+                case .strong:
+                    return 0.8
+                case .veryStrong:
+                    return 1.0
+                }
+            }
             .eraseToAnyPublisher()
     }()
     
@@ -70,6 +129,12 @@ private class SignUpFormViewModel: ObservableObject {
         isUsernameLengthValidPublisher
             .map { $0 ? "" : "Username too short. Needs to be at least 3 characters." }
             .assign(to: &$usernameMessage)
+        passwordProgressBarColorPublisher
+            .map { $0 }
+            .assign(to: &$passwordProgressBarColor)
+        
+        passwordProgressBarValuePublisher
+            .assign(to: &$passwordProgressBarValue)
         
         Publishers.CombineLatest(isPasswordLengthValidPublisher, isPasswordMatchingPublisher)
             .map { isPasswordLengthValid, isPasswordMatching in
@@ -106,8 +171,12 @@ struct SignUpForm: View {
                 SecureField("Password", text: $viewModel.password)
                 SecureField("Repeat password", text: $viewModel.passwordConfirmation)
             } footer: {
-                Text(viewModel.passwordMessage)
-                    .foregroundColor(.red)
+                VStack {
+                    ProgressView(value: viewModel.passwordProgressBarValue)
+                        .tint(viewModel.passwordProgressBarColor)
+                    Text(viewModel.passwordMessage)
+                        .foregroundColor(.red)
+                }
             }
             
             // Submit button
@@ -119,14 +188,15 @@ struct SignUpForm: View {
             }
         }
     }
-}
-
-// MARK: - Preview
-struct SignUpForm_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationStack {
-            SignUpForm()
-                .navigationTitle("Sign up")
+    
+    
+    // MARK: - Preview
+    struct SignUpForm_Previews: PreviewProvider {
+        static var previews: some View {
+            NavigationStack {
+                SignUpForm()
+                    .navigationTitle("Sign up")
+            }
         }
     }
 }
