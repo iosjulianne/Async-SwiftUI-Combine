@@ -29,6 +29,7 @@ private class SignUpFormViewModel: ObservableObject {
     @Published var passwordMessage: String = ""
     @Published var isValid: Bool = false
     @Published var passwordProgressBarColor: Color = .red
+    @Published var passwordProgressBarValue: Float = 0.0
     
     // MARK: Username validattion
     private lazy var isUsernameLengthValidPublisher: AnyPublisher<Bool, Never>  = {
@@ -94,6 +95,26 @@ private class SignUpFormViewModel: ObservableObject {
             .eraseToAnyPublisher()
     }()
     
+    private lazy var passwordProgressBarValuePublisher: AnyPublisher<Float, Never> = {
+        $password
+            .map{ Navajo.strength(ofPassword: $0) }
+            .map { passwordStrength in
+                switch passwordStrength {
+                case .veryWeak:
+                    return 0.2
+                case .weak:
+                    return 0.4
+                case .reasonable:
+                    return 0.6
+                case .strong:
+                    return 0.8
+                case .veryStrong:
+                    return 1.0
+                }
+            }
+            .eraseToAnyPublisher()
+    }()
+    
     // MARK: Form validation
     private lazy var isFormValidPublisher: AnyPublisher<Bool, Never> = {
         Publishers.CombineLatest(isUsernameLengthValidPublisher, isPasswordValidPublisher)
@@ -111,6 +132,9 @@ private class SignUpFormViewModel: ObservableObject {
         passwordProgressBarColorPublisher
             .map { $0 }
             .assign(to: &$passwordProgressBarColor)
+        
+        passwordProgressBarValuePublisher
+            .assign(to: &$passwordProgressBarValue)
         
         Publishers.CombineLatest(isPasswordLengthValidPublisher, isPasswordMatchingPublisher)
             .map { isPasswordLengthValid, isPasswordMatching in
@@ -148,7 +172,7 @@ struct SignUpForm: View {
                 SecureField("Repeat password", text: $viewModel.passwordConfirmation)
             } footer: {
                 VStack {
-                    ProgressView(value: 1.0)
+                    ProgressView(value: viewModel.passwordProgressBarValue)
                         .tint(viewModel.passwordProgressBarColor)
                     Text(viewModel.passwordMessage)
                         .foregroundColor(.red)
