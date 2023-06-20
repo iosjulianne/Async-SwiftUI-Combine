@@ -87,7 +87,7 @@ private class SignUpFormViewModel: ObservableObject {
                 case .reasonable:
                     return .yellow
                 case .strong:
-                    return .yellow
+                    return .green
                 case .veryStrong:
                     return .green
                 }
@@ -101,13 +101,13 @@ private class SignUpFormViewModel: ObservableObject {
             .map { passwordStrength in
                 switch passwordStrength {
                 case .veryWeak:
-                    return 0.2
+                    return 0.0
                 case .weak:
-                    return 0.4
+                    return 0.25
                 case .reasonable:
-                    return 0.6
+                    return 0.5
                 case .strong:
-                    return 0.8
+                    return 0.75
                 case .veryStrong:
                     return 1.0
                 }
@@ -129,8 +129,8 @@ private class SignUpFormViewModel: ObservableObject {
         isUsernameLengthValidPublisher
             .map { $0 ? "" : "Username too short. Needs to be at least 3 characters." }
             .assign(to: &$usernameMessage)
+        
         passwordProgressBarColorPublisher
-            .map { $0 }
             .assign(to: &$passwordProgressBarColor)
         
         passwordProgressBarValuePublisher
