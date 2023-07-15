@@ -137,5 +137,19 @@ fileprivate class ViewModel: ObservableObject {
 }
 ```
 
+- using async/await requires more work on our part, and it is easy to
+get things like cooperative task cancellation wrong or forget an important step,
+like cancelling any tasks that might still be running. 
+- Combine follows a much more declarative approach than async/await: you
+tell the framework what to do, not how to do it.
+
+
 ## Calling Asynchronous Code from Combine
+Combining async/await and Combine:
+
+- `debounce` operator - we can hold off on sending search requests
+over the network until the user has stopped typing for a second
+- `removeDuplicates` operator - further reduce the number of requests by removing any duplicate API
+calls
+- `handleEvents` operator - can extract the code for handling the progress view from the `map` and `sink` operators. This also allows us to replace the `sink/store` combo by a much simpler and easier to use `assign` subscriber
 
