@@ -11,6 +11,7 @@
 		DA791B162A6F622100844348 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA791B152A6F622100844348 /* ContentView.swift */; };
 		DA791B182A6F622800844348 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA791B172A6F622800844348 /* Assets.xcassets */; };
 		DA791B1B2A6F622800844348 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA791B1A2A6F622800844348 /* Preview Assets.xcassets */; };
+		DA791B222A7D9BE200844348 /* SunriseSunset.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA791B212A7D9BE200844348 /* SunriseSunset.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		DA791B152A6F622100844348 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DA791B172A6F622800844348 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA791B1A2A6F622800844348 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		DA791B212A7D9BE200844348 /* SunriseSunset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunriseSunset.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				DA791B132A6F622100844348 /* AsyncSunriseApp.swift */,
 				DA791B152A6F622100844348 /* ContentView.swift */,
+				DA791B232A7DA2B300844348 /* Model */,
 				DA791B172A6F622800844348 /* Assets.xcassets */,
 				DA791B192A6F622800844348 /* Preview Content */,
 			);
@@ -65,6 +68,14 @@
 				DA791B1A2A6F622800844348 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		DA791B232A7DA2B300844348 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DA791B212A7D9BE200844348 /* SunriseSunset.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,6 +148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA791B222A7D9BE200844348 /* SunriseSunset.swift in Sources */,
 				DA791B162A6F622100844348 /* ContentView.swift in Sources */,
 				DA791B142A6F622100844348 /* AsyncSunriseApp.swift in Sources */,
 			);
