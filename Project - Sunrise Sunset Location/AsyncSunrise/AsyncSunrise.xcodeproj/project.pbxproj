@@ -12,6 +12,7 @@
 		DA791B182A6F622800844348 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA791B172A6F622800844348 /* Assets.xcassets */; };
 		DA791B1B2A6F622800844348 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA791B1A2A6F622800844348 /* Preview Assets.xcassets */; };
 		DA791B222A7D9BE200844348 /* SunriseSunset.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA791B212A7D9BE200844348 /* SunriseSunset.swift */; };
+		DA791B262A7F063000844348 /* AsyncLocationKit in Frameworks */ = {isa = PBXBuildFile; productRef = DA791B252A7F063000844348 /* AsyncLocationKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA791B262A7F063000844348 /* AsyncLocationKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,6 +96,9 @@
 			dependencies = (
 			);
 			name = AsyncSunrise;
+			packageProductDependencies = (
+				DA791B252A7F063000844348 /* AsyncLocationKit */,
+			);
 			productName = AsyncSunrise;
 			productReference = DA791B102A6F622100844348 /* AsyncSunrise.app */;
 			productType = "com.apple.product-type.application";
@@ -122,6 +127,9 @@
 				Base,
 			);
 			mainGroup = DA791B072A6F622000844348;
+			packageReferences = (
+				DA791B242A7F063000844348 /* XCRemoteSwiftPackageReference "AsyncLocationKit" */,
+			);
 			productRefGroup = DA791B112A6F622100844348 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -351,6 +359,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DA791B242A7F063000844348 /* XCRemoteSwiftPackageReference "AsyncLocationKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AsyncSwift/AsyncLocationKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.6.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DA791B252A7F063000844348 /* AsyncLocationKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DA791B242A7F063000844348 /* XCRemoteSwiftPackageReference "AsyncLocationKit" */;
+			productName = AsyncLocationKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DA791B082A6F622000844348 /* Project object */;
 }
