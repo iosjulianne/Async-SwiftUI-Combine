@@ -13,6 +13,7 @@
 		DA791B1B2A6F622800844348 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA791B1A2A6F622800844348 /* Preview Assets.xcassets */; };
 		DA791B222A7D9BE200844348 /* SunriseSunset.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA791B212A7D9BE200844348 /* SunriseSunset.swift */; };
 		DA791B262A7F063000844348 /* AsyncLocationKit in Frameworks */ = {isa = PBXBuildFile; productRef = DA791B252A7F063000844348 /* AsyncLocationKit */; };
+		DA791B282A7F252200844348 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA791B272A7F252200844348 /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		DA791B172A6F622800844348 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA791B1A2A6F622800844348 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DA791B212A7D9BE200844348 /* SunriseSunset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunriseSunset.swift; sourceTree = "<group>"; };
+		DA791B272A7F252200844348 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				DA791B212A7D9BE200844348 /* SunriseSunset.swift */,
+				DA791B272A7F252200844348 /* LocationManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -156,6 +159,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA791B282A7F252200844348 /* LocationManager.swift in Sources */,
 				DA791B222A7D9BE200844348 /* SunriseSunset.swift in Sources */,
 				DA791B162A6F622100844348 /* ContentView.swift in Sources */,
 				DA791B142A6F622100844348 /* AsyncSunriseApp.swift in Sources */,
